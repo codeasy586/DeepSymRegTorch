@@ -36,6 +36,11 @@ init_sd_middle = 0.5
 # init_sd_middle = 0.1
 
 
+
+def load_dataset(fpath):
+    sr_ds = np.loadtxt(fpath)
+    return sr_ds
+
 def generate_data(func, N, range_min=DOMAIN[0], range_max=DOMAIN[1]):
     """Generates datasets."""
     x_dim = len(signature(func).parameters)     # Number of inputs to the function, or, dimensionality of x
@@ -124,6 +129,9 @@ class Benchmark:
         device = torch.device("cuda" if use_cuda else "cpu")
         print("Use cuda:", use_cuda, "Device:", device)
 
+        fpath = '/content/DeepSymRegTorch/feynman_ds.txt'
+        dataset_to_load = load_dataset(fpath)
+        *to be continued*
         x, y = generate_data(func, N_TRAIN)
         data, target = x.to(device), y.to(device)
         # x_val, y_val = generate_data(func, N_VAL)
