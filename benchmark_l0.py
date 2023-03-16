@@ -132,7 +132,7 @@ class Benchmark:
 
         fpath = '/content/DeepSymRegTorch/feynman_ds.txt'
         dataset_to_load = load_dataset(input(fpath))
-        x = dataset_to_load[:,(dataset_to_load.shape[1]) - 1]
+        x = dataset_to_load[:,:(dataset_to_load.shape[1]) - 1]
         y = dataset_to_load[:,-1]
         #x, y = generate_data(func, N_TRAIN)
         x_t = torch.from_numpy(x)
