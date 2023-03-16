@@ -147,8 +147,8 @@ class Benchmark:
         test_data, test_target = x_test_t.to(device), y_test_t.to(device)
 
         # Setting up the symbolic regression network
-        x_dim = len(signature(func).parameters)  # Number of input arguments to the function
-
+        #x_dim = len(signature(func).parameters)  # Number of input arguments to the function
+        x_dim = 14
         width = len(self.activation_funcs)
         n_double = functions.count_double(self.activation_funcs)
 
