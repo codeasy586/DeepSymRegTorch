@@ -130,12 +130,15 @@ class Benchmark:
         print("Use cuda:", use_cuda, "Device:", device)
 
         fpath = '/content/DeepSymRegTorch/feynman_ds.txt'
-        dataset_to_load = load_dataset(fpath)
-        *to be continued*
-        x, y = generate_data(func, N_TRAIN)
+        dataset_to_load = load_dataset(input(fpath))
+        x = dataset_to_load[:,(dataset_to_load.shape[1]) - 1]
+        y = dataset_to_load[:,-1]
+        #x, y = generate_data(func, N_TRAIN)
         data, target = x.to(device), y.to(device)
         # x_val, y_val = generate_data(func, N_VAL)
-        x_test, y_test = generate_data(func, N_TEST, range_min=DOMAIN_TEST[0], range_max=DOMAIN_TEST[1])
+        x_test = x[(x.shape[0] - 100):,:]
+        y_test = y[(y.shape[0] - 100, :]
+        #x_test, y_test = generate_data(func, N_TEST, range_min=DOMAIN_TEST[0], range_max=DOMAIN_TEST[1])
         test_data, test_target = x_test.to(device), y_test.to(device)
 
         # Setting up the symbolic regression network
