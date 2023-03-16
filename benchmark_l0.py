@@ -109,8 +109,8 @@ class Benchmark:
             os.makedirs(func_dir)
 
         # Train network!
-        dataset = np.loadtxt(input())
-        expr_list, error_test_list = self.train(func, func_name, trials, func_dir, dataset_to_load = dataset)
+       
+        expr_list, error_test_list = self.train(func, func_name, trials)
 
         # Sort the results by test error (increasing) and print them to file
         # This allows us to easily count how many times it fit correctly.
@@ -124,7 +124,7 @@ class Benchmark:
             fi.write("[%f]\t\t%s\n" % (error_test_sorted[i], str(expr_list_sorted[i])))
         fi.close()
         
-    def train(self, dataset_to_load, func, func_name='', trials=1, func_dir='results/test'):
+    def train(self, func, func_name='', trials=1, func_dir='results/test'):
         """Train the network to find a given function"""
 
         use_cuda = torch.cuda.is_available()
@@ -132,7 +132,7 @@ class Benchmark:
         print("Use cuda:", use_cuda, "Device:", device)
 
         fpath = '/content/DeepSymRegTorch/feynman_ds.txt'
-        
+        dataset_to_load = np.loadtxt(input())
         x = dataset_to_load[:,:(dataset_to_load.shape[1]) - 1]
         y = dataset_to_load[:,-1]
         #x, y = generate_data(func, N_TRAIN)
