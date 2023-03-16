@@ -197,7 +197,7 @@ class Benchmark:
                 # 0th warmup stage, then 2 stages of training with decreasing learning rate
                 for epoch in range(self.n_epochs1 + self.n_epochs2 + 2000):
                     optimizer.zero_grad()  # zero the parameter gradients
-                    outputs = net(data)  # forward pass
+                    outputs = net(data.double())  # forward pass
                     mse_loss = criterion(outputs, target)
 
                     reg_loss = net.get_loss()
