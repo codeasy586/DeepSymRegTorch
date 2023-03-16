@@ -109,7 +109,7 @@ class Benchmark:
             os.makedirs(func_dir)
 
         # Train network!
-        dataset = load_dataset(input(fname))
+        dataset = load_dataset(input())
         expr_list, error_test_list = self.train(func, func_name, trials, func_dir, dataset_to_load = dataset)
 
         # Sort the results by test error (increasing) and print them to file
