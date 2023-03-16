@@ -137,8 +137,8 @@ class Benchmark:
         #x, y = generate_data(func, N_TRAIN)
         data, target = x.to(device), y.to(device)
         # x_val, y_val = generate_data(func, N_VAL)
-        x_test = x[(x.shape[0] - 100):,:]
-        y_test = y[(y.shape[0] - 100:]
+        x_test = x[(x.shape[0]) - 100:,:]
+        y_test = y[(y.shape[0]) - 100:]
         #x_test, y_test = generate_data(func, N_TEST, range_min=DOMAIN_TEST[0], range_max=DOMAIN_TEST[1])
         test_data, test_target = x_test.to(device), y_test.to(device)
 
