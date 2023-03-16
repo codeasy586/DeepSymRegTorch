@@ -15,14 +15,15 @@ import time
 import argparse
 
 
-N_TRAIN = 256       # Size of training dataset
+
+N_TRAIN = 8000       # Size of training dataset
 N_VAL = 100         # Size of validation dataset
 DOMAIN = (-1, 1)    # Domain of dataset - range from which we sample x
 # DOMAIN = np.array([[0, -1, -1], [1, 1, 1]])   # Use this format if each input variable has a different domain
 N_TEST = 100        # Size of test dataset
 DOMAIN_TEST = (-2, 2)   # Domain of test dataset - should be larger than training domain to test extrapolation
 NOISE_SD = 0        # Standard deviation of noise for training dataset
-var_names = ["x", "y", "z"]
+var_names = ["x0", "x1", "x2","x3","x4","x5","x6","x7","x8","x9","x10","x11","x12","x13","y"]
 
 # Standard deviation of random distribution for weight initializations.
 init_sd_first = 0.1
@@ -281,7 +282,7 @@ if __name__ == "__main__":
 
     bench = Benchmark(**kwargs)
 
-    bench.benchmark(lambda x: x, func_name="x", trials=20)
+    bench.benchmark(lambda x: x, func_name="x", trials=10)
     # bench.benchmark(lambda x: x**2, func_name="x^2", trials=20)
     # bench.benchmark(lambda x: x**3, func_name="x^3", trials=20)
     # bench.benchmark(lambda x: np.sin(2*np.pi*x), func_name="sin(2pix)", trials=20)
