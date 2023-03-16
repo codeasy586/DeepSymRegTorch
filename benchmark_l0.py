@@ -109,7 +109,7 @@ class Benchmark:
             os.makedirs(func_dir)
 
         # Train network!
-        dataset = load_dataset(input())
+        dataset = np.loadtxt(input())
         expr_list, error_test_list = self.train(func, func_name, trials, func_dir, dataset_to_load = dataset)
 
         # Sort the results by test error (increasing) and print them to file
@@ -123,7 +123,7 @@ class Benchmark:
         for i in range(trials):
             fi.write("[%f]\t\t%s\n" % (error_test_sorted[i], str(expr_list_sorted[i])))
         fi.close()
-
+        
     def train(self, dataset_to_load, func, func_name='', trials=1, func_dir='results/test'):
         """Train the network to find a given function"""
 
