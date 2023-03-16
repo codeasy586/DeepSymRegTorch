@@ -110,7 +110,7 @@ class Benchmark:
 
         # Train network!
         dataset = load_dataset(input(fname))
-        expr_list, error_test_list = self.train(func, func_name, trials, func_dir, dataset)
+        expr_list, error_test_list = self.train(func, func_name, trials, func_dir, dataset_to_load = dataset)
 
         # Sort the results by test error (increasing) and print them to file
         # This allows us to easily count how many times it fit correctly.
@@ -138,12 +138,14 @@ class Benchmark:
         #x, y = generate_data(func, N_TRAIN)
         x_t = torch.from_numpy(x)
         y_t = torch.from_numpy(y)
+        y_t = y_t.reshape(-1,1)
         data, target = x_t.to(device), y_t.to(device)
         # x_val, y_val = generate_data(func, N_VAL)
         x_test = x[(x.shape[0]) - 100:,:]
         x_test_t = torch.from_numpy(x_test)
         y_test = y[(y.shape[0]) - 100:]
         y_test_t = torch.from_numpy(y_test)
+        y_test_t = y_test_t.reshape(-1,1)
         #x_test, y_test = generate_data(func, N_TEST, range_min=DOMAIN_TEST[0], range_max=DOMAIN_TEST[1])
         test_data, test_target = x_test_t.to(device), y_test_t.to(device)
 
