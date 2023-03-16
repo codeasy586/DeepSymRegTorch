@@ -174,7 +174,7 @@ class Benchmark:
                                     torch.fmod(torch.normal(0, init_sd_middle, size=(width, width + n_double)), 2),
                                     torch.fmod(torch.normal(0, init_sd_last, size=(width, 1)), 2)
                                 ]).to(device)
-
+            net = net.double()
             loss_val = np.nan
             while np.isnan(loss_val):
                 # training restarts if gradients blow up
