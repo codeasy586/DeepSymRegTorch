@@ -16,14 +16,14 @@ import argparse
 
 
 
-N_TRAIN = 8000       # Size of training dataset
-N_VAL = 100         # Size of validation dataset
-DOMAIN = (-1, 1)    # Domain of dataset - range from which we sample x
-# DOMAIN = np.array([[0, -1, -1], [1, 1, 1]])   # Use this format if each input variable has a different domain
-N_TEST = 100        # Size of test dataset
-DOMAIN_TEST = (-2, 2)   # Domain of test dataset - should be larger than training domain to test extrapolation
-NOISE_SD = 0        # Standard deviation of noise for training dataset
-var_names = ["x0", "x1", "x2","x3","x4","x5","x6","x7","x8","x9","x10","x11","x12","x13","y"]
+# N_TRAIN = 24000       # Size of training dataset
+# N_VAL = 100         # Size of validation dataset
+# DOMAIN = (-1, 1)    # Domain of dataset - range from which we sample x
+# # DOMAIN = np.array([[0, -1, -1], [1, 1, 1]])   # Use this format if each input variable has a different domain
+# N_TEST = 100        # Size of test dataset
+# DOMAIN_TEST = (-2, 2)   # Domain of test dataset - should be larger than training domain to test extrapolation
+# NOISE_SD = 0        # Standard deviation of noise for training dataset
+# var_names = ["x0", "x1", "x2","x3","x4","x5","x6","x7","x8","x9","x10","x11","x12","x13","y"]
 
 # Standard deviation of random distribution for weight initializations.
 init_sd_first = 0.1
@@ -134,6 +134,7 @@ class Benchmark:
         fpath = '/content/DeepSymRegTorch/feynman_ds.txt'
         dataset_to_load = np.loadtxt(input())
         x = dataset_to_load[:,:(dataset_to_load.shape[1]) - 1]
+        x_dim = x.shape[1]
         y = dataset_to_load[:,-1]
         #x, y = generate_data(func, N_TRAIN)
         x_t = torch.from_numpy(x)
@@ -151,7 +152,7 @@ class Benchmark:
 
         # Setting up the symbolic regression network
         #x_dim = len(signature(func).parameters)  # Number of input arguments to the function
-        x_dim = 14
+       
         width = len(self.activation_funcs)
         n_double = functions.count_double(self.activation_funcs)
 
