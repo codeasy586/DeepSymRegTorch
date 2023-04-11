@@ -309,7 +309,7 @@ if __name__ == "__main__":
 #     bench.benchmark(lambda x: 1 / (1 + np.exp(-10*x)), func_name="sigmoid(10x)", trials=20)
 #     bench.benchmark(lambda x, y: x**2 + np.sin(2*np.pi*y), func_name="x^2+sin(2piy)", trials=20)
     
-    bench.benchmark(lambda x, y: (math.pow(2,0.5)*math.pow(e,(-(x**2)/(2*y**2))))/2*math.pow(np.pi,0.5)*y, func_name="(2^0.5*(e^(-x**2))/2*y**2)/(2*np.pi**0.5*y)", trials=3)
+    bench.benchmark(lambda x, y: (math.pow(2,0.5)*math.pow(e,(-(x**2)/(2*y**2))))/2*math.pow(np.pi,0.5)*y, func_name="(2^0.5*(e^(-x**2))/2*y**2)/(2*np.pi**0.5*y)", trials=10)
 
     # 3-layer functions
     # bench.benchmark(lambda x, y, z: (x+y*z)**3, func_name="(x+yz)^3", trials=20)
