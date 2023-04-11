@@ -13,6 +13,7 @@ from utils.symbolic_network import SymbolicNetL0
 from inspect import signature
 import time
 import argparse
+import math
 
 
 
@@ -294,19 +295,21 @@ if __name__ == "__main__":
 
     bench = Benchmark(**kwargs)
 
-    bench.benchmark(lambda x: x, func_name="x", trials=5)
-    bench.benchmark(lambda x: x**2, func_name="x^2", trials=20)
-    bench.benchmark(lambda x: x**3, func_name="x^3", trials=20)
-    bench.benchmark(lambda x: np.sin(2*np.pi*x), func_name="sin(2pix)", trials=20)
-    bench.benchmark(lambda x: np.exp(x), func_name="e^x", trials=20)
-    bench.benchmark(lambda x, y: x*y, func_name="xy", trials=5)
-    bench.benchmark(lambda x, y: np.sin(2 * np.pi * x) + np.sin(4*np.pi * y),
-                    func_name="sin(2pix)+sin(2py)", trials=20)
-    bench.benchmark(lambda x, y, z: 0.5*x*y + 0.5*z, func_name="0.5xy+0.5z", trials=5)
-    bench.benchmark(lambda x, y, z: x**2 + y - 2*z, func_name="x^2+y-2z", trials=20)
-    bench.benchmark(lambda x: np.exp(-x**2), func_name="e^-x^2", trials=20)
-    bench.benchmark(lambda x: 1 / (1 + np.exp(-10*x)), func_name="sigmoid(10x)", trials=20)
-    bench.benchmark(lambda x, y: x**2 + np.sin(2*np.pi*y), func_name="x^2+sin(2piy)", trials=20)
+#     bench.benchmark(lambda x: x, func_name="x", trials=5)
+#     bench.benchmark(lambda x: x**2, func_name="x^2", trials=20)
+#     bench.benchmark(lambda x: x**3, func_name="x^3", trials=20)
+#     bench.benchmark(lambda x: np.sin(2*np.pi*x), func_name="sin(2pix)", trials=20)
+#     bench.benchmark(lambda x: np.exp(x), func_name="e^x", trials=20)
+#     bench.benchmark(lambda x, y: x*y, func_name="xy", trials=5)
+#     bench.benchmark(lambda x, y: np.sin(2 * np.pi * x) + np.sin(4*np.pi * y),
+#                     func_name="sin(2pix)+sin(2py)", trials=20)
+#     bench.benchmark(lambda x, y, z: 0.5*x*y + 0.5*z, func_name="0.5xy+0.5z", trials=5)
+#     bench.benchmark(lambda x, y, z: x**2 + y - 2*z, func_name="x^2+y-2z", trials=20)
+#     bench.benchmark(lambda x: np.exp(-x**2), func_name="e^-x^2", trials=20)
+#     bench.benchmark(lambda x: 1 / (1 + np.exp(-10*x)), func_name="sigmoid(10x)", trials=20)
+#     bench.benchmark(lambda x, y: x**2 + np.sin(2*np.pi*y), func_name="x^2+sin(2piy)", trials=20)
+    
+    bench.benchmark(lambda x, y: (math.pow(2,0.5)*math.pow(e,(-(x**2)/(2*y**2))))/2*math.pow(np.pi,0.5)*y, func_name="(2^0.5*(e^(-x**2))/2*y**2)/(2*np.pi**0.5*y)", trials=10)
 
     # 3-layer functions
     # bench.benchmark(lambda x, y, z: (x+y*z)**3, func_name="(x+yz)^3", trials=20)
