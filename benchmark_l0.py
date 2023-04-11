@@ -125,7 +125,7 @@ class Benchmark:
             fi.write("[%f]\t\t%s\n" % (error_test_sorted[i], str(expr_list_sorted[i])))
         fi.close()
         
-    def train(self, func, func_name='', trials=1, func_dir='results/test'):
+    def train(self, func, func_name='', trials=1, func_dir='results/benchmark/test'):
         """Train the network to find a given function"""
 
         use_cuda = torch.cuda.is_available()
