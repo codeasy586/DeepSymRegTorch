@@ -24,6 +24,7 @@ import argparse
 # DOMAIN_TEST = (-2, 2)   # Domain of test dataset - should be larger than training domain to test extrapolation
 # NOISE_SD = 0        # Standard deviation of noise for training dataset
 # var_names = ["x0", "x1", "x2","x3","x4","x5","x6","x7","x8","x9","x10","x11","x12","x13","y"]
+var_names = []
 
 # Standard deviation of random distribution for weight initializations.
 init_sd_first = 0.1
@@ -135,6 +136,9 @@ class Benchmark:
         dataset_to_load = np.loadtxt(input())
         x = dataset_to_load[:,:(dataset_to_load.shape[1]) - 1]
         x_dim = x.shape[1]
+        for var_name in range(x_dim):
+            var_names.append('x' + str(var_name))
+        var_names.append('y')
         y = dataset_to_load[:,-1]
         #x, y = generate_data(func, N_TRAIN)
         x_t = torch.from_numpy(x)
