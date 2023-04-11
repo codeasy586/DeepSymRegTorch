@@ -42,12 +42,12 @@ def load_dataset(fpath):
     sr_ds = np.loadtxt(fpath)
     return sr_ds
 
-def generate_data(func, N, range_min=DOMAIN[0], range_max=DOMAIN[1]):
-    """Generates datasets."""
-    x_dim = len(signature(func).parameters)     # Number of inputs to the function, or, dimensionality of x
-    x = (range_max - range_min) * torch.rand([N, x_dim]) + range_min
-    y = torch.tensor([[func(*x_i)] for x_i in x])
-    return x, y
+# def generate_data(func, N, range_min=DOMAIN[0], range_max=DOMAIN[1]):
+#     """Generates datasets."""
+#     x_dim = len(signature(func).parameters)     # Number of inputs to the function, or, dimensionality of x
+#     x = (range_max - range_min) * torch.rand([N, x_dim]) + range_min
+#     y = torch.tensor([[func(*x_i)] for x_i in x])
+#     return x, y
 
 
 class Benchmark:
