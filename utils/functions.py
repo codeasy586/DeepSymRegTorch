@@ -99,6 +99,13 @@ class Sin(BaseFunction):
 
     def sp(self, x):
         return sp.sin(x * 2*2*np.pi) / self.norm
+    
+class Cos(BaseFunction):
+    def torch(self, x):
+        return torch.cos(x * 2 * 2 * np.pi) / self.norm
+
+    def sp(self, x):
+        return sp.cos(x * 2*2*np.pi) / self.norm
 
 
 class Sigmoid(BaseFunction):
@@ -209,6 +216,7 @@ default_func = [
     *[Identity()] * 4,
     *[Square()] * 4,
     *[Sin()] * 2,
+    *[Cos()] * 2
     *[Exp()] * 2,
     *[Sigmoid()] * 2,
     *[Product()] * 2,
