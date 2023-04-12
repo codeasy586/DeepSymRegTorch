@@ -56,7 +56,7 @@ class Benchmark:
     """Benchmark object just holds the results directory (results_dir) to save to and the hyper-parameters. So it is
     assumed all the results in results_dir share the same hyper-parameters. This is useful for benchmarking multiple
     functions with the same hyper-parameters."""
-    def __init__(self, results_dir, n_layers=2, reg_weight=5e-3, learning_rate=1e-2,
+    def __init__(self, results_dir, n_layers=10, reg_weight=5e-3, learning_rate=1e-2,
                  n_epochs1=10001, n_epochs2=10001):
         """Set hyper-parameters"""
         self.activation_funcs = [
@@ -64,6 +64,7 @@ class Benchmark:
             *[functions.Identity()] * 4,
             *[functions.Square()] * 4,
             *[functions.Sin()] * 2,
+            *[functions.Cos()] * 2
             *[functions.Exp()] * 2,
             *[functions.Sigmoid()] * 2,
             *[functions.Product(1.0)] * 2
