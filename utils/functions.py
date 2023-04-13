@@ -216,7 +216,7 @@ default_func = [
     *[Identity()] * 4,
     *[Square()] * 4,
     *[Sin()] * 2,
-    *[Cos()] * 2
+    *[Cos()] * 2,
     *[Exp()] * 2,
     *[Sigmoid()] * 2,
     *[Product()] * 2,
